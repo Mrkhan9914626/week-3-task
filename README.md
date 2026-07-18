@@ -2,7 +2,7 @@
 
 [![Streamlit App](https://img.shields.io/badge/Streamlit-Live-FF4B4B?logo=streamlit&logoColor=white)](https://week-3-task-fbt3ndganj9pbmmaevfxnh.streamlit.app/)
 
-A multi-tool AI agent powered by **OpenAI Agents SDK** + **Google Gemini 3.5 Flash** + **Tavily Search**, with a FastAPI backend and Streamlit frontend.
+A multi-tool AI agent powered by **OpenAI Agents SDK** + **Google Gemini 3.1 Flash Lite Preview** + **Tavily Search**, with a FastAPI backend and Streamlit frontend.
 
 Built for **Week 3** of the AlgoHub AI Agents & Automation Internship.
 
@@ -25,7 +25,7 @@ Built for **Week 3** of the AlgoHub AI Agents & Automation Internship.
 | Category | Choice |
 |---|---|
 | Agent Framework | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) v0.18.3 |
-| LLM | Google Gemini 3.5 Flash (via OpenAI-compatible endpoint) |
+| LLM | Google Gemini 3.1 Flash Lite Preview (via OpenAI-compatible endpoint) |
 | Search | [Tavily Search API](https://tavily.com/) |
 | Backend | FastAPI (async, SSE streaming) |
 | Frontend | Streamlit |
@@ -131,7 +131,7 @@ curl -N "http://localhost:8000/agent/stream?query=What%20is%2025*4"
 ```
 ┌───────────────────┐     OpenAI Agents SDK     ┌──────────┐
 │    Streamlit       │ ────────────────────────> │  Gemini   │
-│    (app.py)        │ <──────────────────────── │  3.5      │
+│    (app.py)        │ <──────────────────────── │  3.1 Flash Lite Preview │
 └────────┬──────────┘                            └──────────┘
          │
     ┌────┼────┐────────┐────────┐
@@ -169,7 +169,7 @@ curl -N "http://localhost:8000/agent/stream?query=What%20is%2025*4"
 ```
 ┌─────────────┐     HTTP/SSE     ┌──────────────┐     OpenAI SDK     ┌──────────┐
 │  Streamlit   │ ──────────────> │   FastAPI    │ ────────────────> │  Gemini  │
-│  (app.py)   │ <────────────── │   (api.py)   │ <──────────────── │  3.5     │
+│  (app.py)   │ <────────────── │   (api.py)   │ <──────────────── │  3.1 Flash Lite Preview │
 └─────────────┘                 └──────┬───────┘                   └──────────┘
                                        │
                               ┌────────┼────────┐────────┐
@@ -179,4 +179,4 @@ curl -N "http://localhost:8000/agent/stream?query=What%20is%2025*4"
                                    Eval             Executor
 ```
 
-The OpenAI Agents SDK uses Gemini via its OpenAI-compatible endpoint (`generativelanguage.googleapis.com/v1beta/openai/`). The agent runs a think-act-observe loop, deciding which tool to call based on the user's request. Tracing is disabled since we use Gemini, not OpenAI.
+The OpenAI Agents SDK uses Gemini 3.1 Flash Lite Preview via its OpenAI-compatible endpoint (`generativelanguage.googleapis.com/v1beta/openai/`). The agent runs a think-act-observe loop, deciding which tool to call based on the user's request. Tracing is disabled since we use Gemini, not OpenAI.
