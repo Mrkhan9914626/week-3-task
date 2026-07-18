@@ -1,0 +1,16 @@
+[project]
+name = "week-3"
+version = "0.1.0"
+description = "Multi-Tool Agent using OpenAI Agents SDK + Gemini + Tavily"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "openai-agents>=0.18.0",
+    "openai>=1.60.0",
+    "tavily-python>=0.5.0",
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.34.0",
+    "streamlit>=1.39.0",
+    "python-dotenv>=1.2.0",
+    "httpx>=0.28.0",
+]

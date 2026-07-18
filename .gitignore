@@ -1,0 +1,26 @@
+# Credentials
+.env
+.context7.env
+.secrets.toml
+.streamlit/secrets.toml
+
+# Claude config
+.claude/
+
+# PDFs
+AlgoHub_AI_Agents_Automation_Internship.pdf
+*.pdf
+
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# MCP config (contains tokens)
+.mcp.json
+.mcp*.json
+
+# Editor config
+.vscode/
