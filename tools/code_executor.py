@@ -23,7 +23,7 @@ def _build_sandbox_code(user_code: str) -> str:
     wrapper = textwrap.dedent(f"""
 import builtins
 
-# Restrict dangerous builtins
+# Restrict dangerous builtins to a safe subset
 _safe_builtins = {{}}
 for _name in ("print", "len", "range", "int", "float", "str", "bool",
               "list", "dict", "tuple", "set", "type", "True", "False",
@@ -35,16 +35,19 @@ for _name in ("print", "len", "range", "int", "float", "str", "bool",
               "ArithmeticError", "OverflowError"):
     _safe_builtins[_name] = getattr(builtins, _name, None)
 
-# Whitelisted modules
+# Whitelisted module names
 _allowed_modules = [{allowed_imports_str}]
-for _mod_name in _allowed_modules:
-    try:
-        _safe_builtins[_mod_name] = __import__(_mod_name)
-    except ImportError:
-        pass
 
-# Allow specific imports
-_import_safe_modules = {allowed_imports_str}
+# Custom __import__ that only allows whitelisted modules
+def _safe_import(name, *args):
+    if name not in _allowed_modules:
+        raise ImportError(
+            f"Module '{{name}}' is not allowed. "
+            f"Allowed modules: {{', '.join(_allowed_modules)}}"
+        )
+    return __import__(name, *args)
+
+_safe_builtins["__import__"] = _safe_import
 
 _globals = {{"_builtins": _safe_builtins, "__builtins__": _safe_builtins}}
 _locals = {{}}
