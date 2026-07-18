@@ -1,5 +1,7 @@
 # 🛠️ Multi-Tool Agent
 
+[![Streamlit App](https://img.shields.io/badge/Streamlit-Live-FF4B4B?logo=streamlit&logoColor=white)](https://week-3-task-fbt3ndganj9pbmmaevfxnh.streamlit.app/)
+
 A multi-tool AI agent powered by **OpenAI Agents SDK** + **Google Gemini 3.5 Flash** + **Tavily Search**, with a FastAPI backend and Streamlit frontend.
 
 Built for **Week 3** of the AlgoHub AI Agents & Automation Internship.
